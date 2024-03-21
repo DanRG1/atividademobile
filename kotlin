@@ -1,0 +1,34 @@
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Definindo a taxa de conversão
+        val taxaConversao = 2.0
+
+        // Configurando o evento de clique no botão
+        btnConverter.setOnClickListener {
+            // Obtendo o valor inserido pelo usuário
+            val valorString = etValor.text.toString()
+
+            if (valorString.isNotEmpty()) {
+                // Convertendo o valor para Double
+                val valor = valorString.toDouble()
+
+                // Realizando a conversão
+                val valorConvertido = valor * taxaConversao
+
+                // Exibindo o valor convertido no TextView
+                tvResultado.text = "Valor convertido: $valorConvertido"
+            } else {
+                // Se o campo estiver vazio, exibir uma mensagem de erro
+                tvResultado.text = "Por favor, insira um valor válido."
+            }
+        }
+    }
+}
